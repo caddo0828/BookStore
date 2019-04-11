@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<title>易买网后台管理</title>
+<link type="text/css" rel="stylesheet" href="/BookStore/Manager/static/css/mana.css" />
+<script type="text/javascript" src="/BookStore/Manager/static/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="/BookStore/Manager/static/js/comm.js"></script>
+</head>
+<body style="background-color: #68A54C;">
+
+<div id="login" class="wrap">
+	<div class="shadow">
+		<em class="corner lb"></em>
+		<em class="corner rt"></em>
+		<div class="box">
+			<h2>购物商城后台管理</h2>
+			<form id="loginForm" method="post" action="/BookStore/ManaLoginServlet" onsubmit="return checkForm(this)">
+				<table>
+					<tr>
+						<td class="field">* 用户名：</td>
+						<td><input class="text" type="text" name="name" /></td>
+					</tr>
+					<tr>
+						<td class="field">* 登录密码：</td>
+						<td><input class="text" type="password" name="passWord"/></td>
+					</tr>
+					<tr>
+						<td class="field"></td>
+						<td><input id="button" type="submit" value="登录" /><span></span></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+</body>
+</html>
