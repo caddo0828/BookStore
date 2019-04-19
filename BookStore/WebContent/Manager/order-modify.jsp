@@ -19,9 +19,9 @@
 	<div class="navbar">
 		<ul class="clearfix">
 			<li class="current"><a href="/BookStore/Manager/index.html">首页</a></li>
-			<li><a href="/BookStore/ManafindUserServlet.do">用户</a></li>
-			<li><a href="/BookStore/ManaFindBookServlet.do">图书</a></li>
-			<li><a href="/BookStore/ManaFindOrderServlet.do">订单</a></li>
+			<li><a href="/BookStore/ManagerUserServlet.do?method=showUser">用户</a></li>
+			<li><a href="/BookStore/ManagerBookServlet.do?method=showBook">图书</a></li>
+			<li><a href="/BookStore/ManagerOrderServlet.do?method=showOrder">订单</a></li>
 		</ul>
 	</div>
 </div>
@@ -35,18 +35,18 @@
 		<div class="box">
 			<dl>
 				<dt>用户管理</dt>
-				<dd><em><a href="/BookStore/Manager/user-add.jsp">新增</a></em><a href="/BookStore/ManafindUserServlet.do">用户管理</a></dd>
+				<dd><em><a href="/BookStore/Manager/user-add.jsp">新增</a></em><a href="/BookStore/ManagerUserServlet.do?method=showUser">用户管理</a></dd>
 				<dt>图书信息</dt>
-				<dd><em><a href="/BookStore/Manager/book-add.jsp">新增</a></em><a href="/BookStore/ManaFindBookServlet.do">图书管理</a></dd>
+				<dd><em><a href="/BookStore/Manager/book-add.jsp">新增</a></em><a href="/BookStore/ManagerBookServlet.do?method=showBook">图书管理</a></dd>
 				<dt>订单管理</dt>
-				<dd><a href="/BookStore/ManaFindOrderServlet.do">订单管理</a></dd>
+				<dd><a href="/BookStore/ManagerOrderServlet.do?method=showOrder">订单管理</a></dd>
 			</dl>
 		</div>
 	</div>
 	<div class="main">
 		<h2>修改订单</h2>
 		<div class="manage">
-			<form action="/BookStore/ManaOrderServlet.do?type=update&pageNumber=${param.pageNumber}" method="post" onsubmit="return checkOrderForm(this);">
+			<form action="/BookStore/ManagerOrderServlet.do?method=update&pageNumber=${param.pageNumber}" method="post" onsubmit="return checkOrderForm(this);">
 				<table class="form">
 					<tr>
 						<td class="field">订单号：</td>

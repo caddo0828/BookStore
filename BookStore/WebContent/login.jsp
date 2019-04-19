@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -15,7 +15,7 @@
 <body>
 <div id="header" class="wrap">
 	<div id="logo"><img src="static/images/logo.gif" /></div>
-	<div class="help"><a href="/BookStore/register.html">注册</a><a href="#">帮助中心</a></div>
+	<div class="help"><a href="register.html">注册</a><a href="#">帮助中心</a></div>
 	<div class="navbar">
 		<ul class="clearfix">
 			<li class="current"><a href="#">首页</a></li>
@@ -53,7 +53,7 @@
 		<em class="corner rt"></em>
 		<div class="box">
 			<h2>欢迎用户登录</h2>
-			<form id="loginForm" method="post" action="${pageContext.request.contextPath}/LoginServlet" onsubmit="return checkLogin()">
+			<form id="loginForm" method="post" action="${pageContext.request.contextPath}/UserServlet?method=login" onsubmit="return checkLogin()">
 				<table>
 					<tr>
 						<td class="field">* 用户名：</td>
@@ -73,14 +73,14 @@
 					<tr>
 						<td class="field">验证码：</td>
 						<td><input class="text verycode" type="text" name="veryCode" id="randomNumberID" onfocus="focusItem(this)" onblur="checkByItem(this);" />
-							<img id="veryCode" src="/BookStore/ImageServlet" />
-							<a href="/BookStore/login.jsp">看不清，换一张</a>
+							<img id="veryCode" src="UserServlet?method=imageNumber" />
+							<a href="login.jsp">看不清，换一张</a>
 							<span></span>
 						</td>
 					</tr>
 					<tr>
 						<td><label class="ui-left"><input type="submit" name="submit"/></label></td>
-						<td><label class="ui-right"><input type="button" name="register" onclick="window.location='/BookStore/register.html';"/></label></td>
+						<td><label class="ui-right"><input type="button" name="register" onclick="window.location='register.html';"/></label></td>
 					</tr>
 					
 				</table>

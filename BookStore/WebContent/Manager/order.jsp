@@ -18,9 +18,9 @@
 	<div class="navbar">
 		<ul class="clearfix">
 			<li class="current"><a href="/BookStore/Manager/index.html">首页</a></li>
-			<li><a href="/BookStore/ManafindUserServlet.do">用户</a></li>
-			<li><a href="/BookStore/ManaFindBookServlet.do">图书</a></li>
-			<li><a href="/BookStore/ManaFindOrderServlet.do">订单</a></li>
+			<li><a href="/BookStore/ManagerUserServlet.do?method=showUser">用户</a></li>
+			<li><a href="/BookStore/ManagerBookServlet.do?method=showBook">图书</a></li>
+			<li><a href="/BookStore/ManagerOrderServlet.do?method=showOrder">订单</a></li>
 		</ul>
 	</div>
 </div>
@@ -34,11 +34,11 @@
 		<div class="box">
 			<dl>
 				<dt>用户管理</dt>
-				<dd><em><a href="/BookStore/Manager/user-add.jsp">新增</a></em><a href="/BookStore/ManafindUserServlet.do">用户管理</a></dd>
+				<dd><em><a href="/BookStore/Manager/user-add.jsp">新增</a></em><a href="/BookStore/ManagerUserServlet.do?method=showUser">用户管理</a></dd>
 				<dt>图书信息</dt>
-				<dd><em><a href="/BookStore/Manager/book-add.jsp">新增</a></em><a href="/BookStore/ManaFindBookServlet.do">图书管理</a></dd>
+				<dd><em><a href="/BookStore/Manager/book-add.jsp">新增</a></em><a href="/BookStore/ManagerBookServlet.do?method=showBook">图书管理</a></dd>
 				<dt>订单管理</dt>
-				<dd><a href="/BookStore/ManaFindOrderServlet.do">订单管理</a></dd>
+				<dd><a href="/BookStore/ManagerOrderServlet.do?method=showOrder">订单管理</a></dd>
 			</dl>
 		</div>
 	</div>
@@ -46,7 +46,7 @@
 		<h2>订单管理   &nbsp;&nbsp; <b style="color: red;">${error}</b></h2>
 		<div class="manage">
 			<div class="search">
-				<form method="post" action="/BookStore/ManaFindOrderServlet.do?type=search">
+				<form method="post" action="/BookStore/ManagerOrderServlet.do?method=search">
 					订单号：<input type="text" class="text" style="width:250px;" name="orderId" /> 订购人：<input type="text" class="text" name="orderName" /> <label class="ui-blue"><input type="submit" name="submit" value="查询" /></label>
 				</form>
 			</div>
@@ -68,7 +68,7 @@
 						    <td class="w1 c">${order.totalPrice}元</td>
 							<td>${order.address }</td>
 							<td class="w1 c">${order.telephone}</td>
-							<td class="w1 c"><a href="/BookStore/Manager/order-modify.jsp?orderId=${order.id}&pageNumber=${pageNumber}">修改</a> <a href="/BookStore/ManaOrderServlet.do?type=delete&orderId=${order.id}&pageNumber=${pageNumber}">删除</a></td>
+							<td class="w1 c"><a href="/BookStore/Manager/order-modify.jsp?orderId=${order.id}&pageNumber=${pageNumber}">修改</a> <a href="/BookStore/ManagerOrderServlet.do?method=delete&orderId=${order.id}&pageNumber=${pageNumber}">删除</a></td>
 						</tr>
 					</c:forEach>	
 				</c:if>
@@ -76,13 +76,13 @@
 			<div class="pager">
 				<ul class="clearfix">
 					<li><b style="color: red; font-size: 14px;">共&nbsp;&nbsp;&nbsp;${pageCount}页</b></li>
-					<li><a href="/BookStore/ManaFindOrderServlet.do?pageNumber=${pageNumber-1}">上一页</a></li>
-					<li class="current"><a href="/BookStore/ManaFindOrderServlet.do?pageNumber=1">1</a></li>
-					<li><a href="/BookStore/ManaFindOrderServlet.do?pageNumber=2">2</a></li>
-					<li><a href="/BookStore/ManaFindOrderServlet.do?pageNumber=3">3</a></li>
-					<li><a href="/BookStore/ManaFindOrderServlet.do?pageNumber=4">4</a></li>
-					<li><a href="/BookStore/ManaFindOrderServlet.do?pageNumber=5">5</a></li>
-					<li> <a href="/BookStore/ManaFindOrderServlet.do?pageNumber=${pageNumber+1}">下一页</a> </li>
+					<li><a href="/BookStore/ManagerOrderServlet.do?method=showOrder&pageNumber=${pageNumber-1}" <c:if test="${pageNumber<=1}">  onclick="javascript:return false;" </c:if>  >上一页</a></li>
+					<li class="current"><a href="/BookStore/ManagerOrderServlet.do?method=showOrder&pageNumber=1">1</a></li>
+					<li><a href="/BookStore/ManagerOrderServlet.do?method=showOrder&pageNumber=2">2</a></li>
+					<li><a href="/BookStore/ManagerOrderServlet.do?method=showOrder&pageNumber=3">3</a></li>
+					<li><a href="/BookStore/ManagerOrderServlet.do?method=showOrder&pageNumber=4">4</a></li>
+					<li><a href="/BookStore/ManagerOrderServlet.do?method=showOrder&pageNumber=5">5</a></li>
+					<li> <a href="/BookStore/ManagerOrderServlet.do?method=showOrder&pageNumber=${pageNumber+1}"  <c:if test="${pageNumber>=pageCount }">  onclick="javascript:return false;" </c:if> >下一页</a> </li>
 				</ul>
 			</div>
 		</div>

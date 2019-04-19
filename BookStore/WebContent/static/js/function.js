@@ -42,7 +42,7 @@ function updateNumber(obj) {
 	}else {
 		$(".jump").attr("disabled",false);
 	}
-	return true;
+
 }
 
 //全选及全选取消操作
@@ -86,7 +86,7 @@ function changeAction(obj) {
 			}
 			
 			if(ck) {
-				 $("#form1").attr("action","/BookStore/OrderCLServlet?type=shoppingCar");
+				 $("#form1").attr("action","OrderServlet?method=shoppingCar");
 				 $("#form1")[0].submit();
 				 return true;
 			}else {
@@ -127,9 +127,9 @@ function checkNums(obj,nums,bookID) {
 	if(nums>=1&&buyNums<=nums) {
 		//允许购买,在判断是直接购买类型，还是加入购物车类型
 		if(obj.value=="immiBuy") {
-			location.href="/BookStore/OrderCLServlet?type=imme&id="+bookID+"&buyNums="+buyNums; 
+			location.href="OrderServlet?method=immeBuy&id="+bookID+"&buyNums="+buyNums; 
 		}else if(obj.value=="shoppingCar") {
-			location.href="/BookStore/BookCLServlet?type=add&id="+bookID+"&buyNums="+buyNums;
+			location.href="BookServlet?method=add&id="+bookID+"&buyNums="+buyNums;
 		}	
 	}else {
 		msgBox.innerHTML = "当前书籍库存量不足，无法购买";
@@ -150,8 +150,7 @@ function checkData() {
 	return true;
 }
 
-//用于判断当界面信息出错时，仍然提交数据时判断
-var flag = true;
+
 
 //判断收货信息是否符合规范
 function focusPhone(obj) {
@@ -159,6 +158,7 @@ function focusPhone(obj) {
 	msgBox.innerHTML="";
 	msgBox.className="";
 }
+
 
 
 //填写收货联系电话时校验
@@ -169,17 +169,18 @@ function checkPhone(obj) {
 	if(!reg_tel.test(tel)) {
 		msgBox.innerHTML="请输入正确格式的手机号码！";
 		msgBox.className="error";
-		flag = false;
-		return flag;
+		return false;
 	}
-	return flag;
+	
 }
 
 //对总的订购消息验证，不允许为空
 function checkMsg() {
 	var msgBox = document.getElementById("errorMsg");
-	var array = document.getElementsByClassName("text");
-	if(flag) {
+	var array =  document.getElementsByClassName("text");
+	var phoneTip = $("#phoneTip").html();
+	
+	if(phoneTip=="") {
 		for(var i=0;i<array.length;i++) {
 			if(array[i].value=="") {
 				msgBox.innerHTML="订购消息不能为空，请重新填写！";
@@ -190,10 +191,9 @@ function checkMsg() {
 	}else {
 		msgBox.innerHTML="订购消息出错，请确认出错信息重新填写！";
 		msgBox.className="error";
-		flag = true;
 		return false;
 	}
-	return true;
+
 }
 
 

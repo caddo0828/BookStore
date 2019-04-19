@@ -14,6 +14,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.store.user.domain.User;
+import com.store.user.service.UserService;
+import com.store.user.service.impl.UserServiceImpl;
 import com.store.user.dao.UserDao;
 /**
  * 对login.jsp, 以及index.jsp进行过滤， 判断是否要实现自动登陆功能
@@ -34,6 +36,8 @@ public class LoginFilter implements Filter{
 		
 		HttpServletRequest req = (HttpServletRequest)request;
 		HttpServletResponse resp = (HttpServletResponse) response;
+		
+		UserService service = new UserServiceImpl();
 		//获取cookie信息
 		Cookie[] cookies = req.getCookies();
 		if(cookies!=null) {
@@ -41,12 +45,12 @@ public class LoginFilter implements Filter{
 				if(cookies[i].getName().equals("autoLogin")) {
 					//说明找到了对应的cookie，取出值存放在session对象中，供Login.jsp界面直接使用
 					String[] autoLogin = cookies[i].getValue().split("=");
-				    String tel="";
+				    String name="";
 				    String pwd="";
 					try {
-						tel = java.net.URLDecoder.decode(autoLogin[0], "utf-8");
+						name = java.net.URLDecoder.decode(autoLogin[0], "utf-8");
 						pwd = java.net.URLDecoder.decode(autoLogin[1], "utf-8");
-						User user = UserDao.search(tel, pwd);
+						User user = service.search(name, pwd);
 						//当重启服务器后，或者reload对应的session失效，此时无法从对应的session中取出存储的用户信息，也就是无法自动登录
 						((HttpServletRequest)request).getSession().setAttribute("loginUser", user);
 					} catch (UnsupportedEncodingException e) {

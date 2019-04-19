@@ -14,13 +14,13 @@
 <body>
 <div id="header" class="wrap">
 	<div id="logo"><img src="static/images/logo.gif" /></div>
-	<div class="help"><a href="/BookStore/ProductServlet">返回前台页面</a></div>
+	<div class="help"><a href="ProductServlet?method=showHall">返回前台页面</a></div>
 	<div class="navbar">
 		<ul class="clearfix">
-			<li class="current"><a href="/BookStore/Manager/index.html">首页</a></li>
-			<li><a href="/BookStore/ManafindUserServlet.do">用户</a></li>
-			<li><a href="/BookStore/ManaFindBookServlet.do">图书</a></li>
-			<li><a href="/BookStore/ManaFindOrderServlet.do">订单</a></li>
+			<li class="current"><a href="Manager/index.html">首页</a></li>
+			<li><a href="/BookStore/ManagerUserServlet.do?method=showUser">用户</a></li>
+			<li><a href="ManagerBookServlet.do?method=showBook">图书</a></li>
+			<li><a href="ManagerOrderServlet.do?method=showOrder">订单</a></li>
 		</ul>
 	</div>
 </div>
@@ -34,11 +34,11 @@
 		<div class="box">
 			<dl>
 				<dt>用户管理</dt>
-				<dd><em><a href="/BookStore/Manager/user-add.jsp">新增</a></em><a href="/BookStore/ManafindUserServlet.do">用户管理</a></dd>
+				<dd><em><a href="/BookStore/Manager/user-add.jsp">新增</a></em><a href="/BookStore/ManagerUserServlet.do?method=showUser">用户管理</a></dd>
 				<dt>图书信息</dt>
-				<dd><em><a href="/BookStore/Manager/book-add.jsp">新增</a></em><a href="/BookStore/ManaFindBookServlet.do">图书管理</a></dd>
+				<dd><em><a href="/BookStore/Manager/book-add.jsp">新增</a></em><a href="/BookStore/ManagerBookServlet.do?method=showBook">图书管理</a></dd>
 				<dt>订单管理</dt>
-				<dd><a href="/BookStore/ManaFindOrderServlet.do">订单管理</a></dd>
+				<dd><a href="/BookStore/ManagerOrderServlet.do?method=showOrder">订单管理</a></dd>
 			</dl>
 		</div>
 	</div>
@@ -46,7 +46,7 @@
 		<h2>商品管理&nbsp;&nbsp;&nbsp;  <b style="color: red;">${error}</b></h2>
 		<div class="manage">
 			<div class="search">
-				<form method="post" action="/BookStore/ManaFindBookServlet.do?type=search">
+				<form method="post" action="/BookStore/ManagerBookServlet.do?method=find">
 					图书编号：<input type="text" class="text" style="width:250px;" name="bookId" /> 图书名称：<input type="text" class="text" name="bookName" /> <label class="ui-blue"><input type="submit" name="submit" value="查询" /></label>
 				</form>
 			</div>
@@ -60,10 +60,10 @@
 				<c:forEach items="${bookList}" var="book">
 				  <tr>
 					<td class="first">${book.id}</td>  
-					<td class="thumb"><img src="/BookStore/${book.imgurl}" style="width: 54px;height: 54px;" /><a href="/BookStore/BookViewServlet?id=${book.id}" target="_blank">${book.name}</a></td>
+					<td class="thumb"><img src="/BookStore/${book.imgurl}" style="width: 54px;height: 54px;" /><a href="BookServlet?method=bookView&id=${book.id}" target="_blank">${book.name}</a></td>
 					<td class="w1 c">
 							<a href="/BookStore/Manager/book-modify.jsp?bid=${book.id}&bname=${book.name}&imgurl=${book.imgurl}">修改</a> 
-							<a href="/BookStore/ManaBookDelServlet.do?bid=${book.id}">删除</a>
+							<a href="/BookStore/ManagerBookServlet.do?method=delBook&bid=${book.id}">删除</a>
 					</td>
 				  </tr>
 				</c:forEach>
@@ -72,13 +72,13 @@
 			<div class="pager">
 				<ul class="clearfix">
 					<li><b style="color: red; font-size: 14px;">共&nbsp;&nbsp;&nbsp;${pageCount}页</b></li>
-					<li><a href="/BookStore/ManaFindBookServlet.do?pageNumber=${pageNumber-1}">上一页</a></li>
-					<li class="current"><a href="/BookStore/ManaFindBookServlet.do?pageNumber=1">1</a></li>
-					<li><a href="/BookStore/ManaFindBookServlet.do?pageNumber=2">2</a></li>
-					<li><a href="/BookStore/ManaFindBookServlet.do?pageNumber=3">3</a></li>
-					<li><a href="/BookStore/ManaFindBookServlet.do?pageNumber=4">4</a></li>
-					<li><a href="/BookStore/ManaFindBookServlet.do?pageNumber=5">5</a></li>
-					<li> <a href="/BookStore/ManaFindBookServlet.do?pageNumber=${pageNumber+1}">下一页</a> </li>
+					<li><a href="/BookStore/ManagerBookServlet.do?method=showBook&pageNumber=${pageNumber-1}" <c:if test="${pageNumber<=1}">  onclick="javascript:return false;" </c:if>  >上一页</a></li>
+					<li class="current"><a href="ManagerBookServlet.do?method=showBook&pageNumber=1">1</a></li>
+					<li><a href="/BookStore/ManagerBookServlet.do?method=showBook&pageNumber=2">2</a></li>
+					<li><a href="/BookStore/ManagerBookServlet.do?method=showBook&pageNumber=3">3</a></li>
+					<li><a href="/BookStore/ManagerBookServlet.do?method=showBook&pageNumber=4">4</a></li>
+					<li><a href="/BookStore/ManagerBookServlet.do?method=showBook&pageNumber=5">5</a></li>
+					<li> <a href="/BookStore/ManagerBookServlet.do?method=showBook&pageNumber=${pageNumber+1}" <c:if test="${pageNumber>=pageCount }">  onclick="javascript:return false;" </c:if> >下一页</a> </li>
 				</ul>
 			</div>
 		</div>

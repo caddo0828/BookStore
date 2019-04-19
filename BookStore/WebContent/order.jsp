@@ -16,11 +16,11 @@
 <body>
 <div id="header" class="wrap">
 	<div id="logo"><img src="static/images/logo.gif" /></div>
-	<div class="help"><a href="/BookStore/ShowCarServlet" class="shopping">购物车</a><a href="#">我的订单</a><a href="/BookStore/register.html">注册</a><a href="/BookStore/LoginOutServlet">安全退出</a></div>
+	<div class="help"><a href="ShowCarServlet?method=showCar" class="shopping">购物车</a><a href="#">我的订单</a><a href="/BookStore/register.html">注册</a><a href="UserServlet?method=loginOut">安全退出</a></div>
 	<div class="navbar">
 		<ul class="clearfix">
-			<li class="current"><a href="/BookStore/ProductServlet">首页</a></li>
-			<li><a href="/BookStore/BookListServlet">图书</a></li>
+			<li class="current"><a href="ProductServlet?method=showHall">首页</a></li>
+			<li><a href="BookServlet?method=showAllBook">图书</a></li>
 			<li><a href="#">百货</a></li>
 			<li><a href="#">品牌</a></li>
 			<li><a href="#">促销</a></li>
@@ -51,7 +51,7 @@
 </div>
 <div class="wrap">
 	<div id="shopping">
-		<form action="/BookStore/order_message.jsp" onsubmit="return checkData();">
+		<form action="order_message.jsp" onsubmit="return checkData();">
 			<table>
 				<tr>
 					<th>商品封面图</th>

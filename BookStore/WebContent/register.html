@@ -13,7 +13,7 @@
 <body>
 <div id="header" class="wrap">
 	<div id="logo"><img src="static/images/logo.gif" /></div>
-	<div class="help"><a href="/BookStore/login.jsp">登录</a><a href="/BookStore/register.html">注册</a><a href="#">帮助中心</a></div>
+	<div class="help"><a href="login.jsp">登录</a><a href="register.html">注册</a><a href="#">帮助中心</a></div>
 	<div class="navbar">
 		<ul class="clearfix">
 			<li class="current"><a href="#">首页</a></li>
@@ -55,7 +55,7 @@
 				<li class="current"><em></em>填写注册信息</li>
 				<li class="last"><em></em>注册成功</li>
 			</ul>
-			<form id="regForm" method="post" action="/BookStore/RegisterServlet" onsubmit="return checkForm(this);">
+			<form id="regForm" method="post" action="UserServlet?method=register" onsubmit="return checkForm(this);">
 				<table>
 					<tr>
 						<td class="field">* 用户名：</td>

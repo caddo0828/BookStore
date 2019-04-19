@@ -16,11 +16,11 @@
 	<body>	
 	<div id="header" class="wrap">
 	<div id="logo"><img src="static/images/logo.gif" /></div>
-	<div class="help"><a href="/BookStore/ShowCarServlet" class="shopping">购物车</a><a href="/BookStore/HistoryServlet">订单历史记录</a><a href="/BookStore/register.html">注册</a><a href="/BookStore/LoginOutServlet">安全退出</a></div>
+	<div class="help"><a href="ShowCarServlet?method=showCar" class="shopping">购物车</a><a href="HistoryServlet?method=showHistory">订单历史记录</a><a href="register.html">注册</a><a href="UserServlet?method=loginOut">安全退出</a></div>
 	<div class="navbar">
 		<ul class="clearfix">
-			<li class="current"><a href="/BookStore/ProductServlet">首页</a></li>
-			<li><a href="/BookStore/BookListServlet">图书</a></li>
+			<li class="current"><a href="ProductServlet?method=showHall">首页</a></li>
+			<li><a href="BookServlet?method=showAllBook">图书</a></li>
 			<li><a href="#">百货</a></li>
 			<li><a href="#">品牌</a></li>
 			<li><a href="#">促销</a></li>
@@ -54,7 +54,7 @@
 			<h2>商品分类</h2>
 			<dl>
 				<dt>图书音像</dt>
-				<dd><a href="/BookStore/BookListServlet">图书</a></dd>
+				<dd><a href="BookServlet?method=showAllBook">图书</a></dd>
 				<dt>百货</dt>
 				<dd><a href="#">运动健康</a></dd>
 				<dd><a href="#">服装</a></dd>
@@ -79,16 +79,16 @@
 			<h2>全部商品 </h2>  
 			<div class="pager">
 				<ul class="clearfix">
-					<li><c:if test="${pageNumber!=1}">
-	       				 <a href="/BookStore/BookListServlet?pageNumber=${pageNumber-1}"><img alt="" border="0" src="static/images/previous_page.png"></a> </c:if>
+					<li>
+	       				 <a href="BookServlet?method=showAllBook&pageNumber=${pageNumber-1}"  <c:if test="${pageNumber<=1}">  onclick="javascript:return false;" </c:if> ><img alt="" border="0" src="static/images/previous_page.png"> </a> 
 	       			</li>
 	       			<li class="current">
-	       			   <form action="/BookStore/BookListServlet" method="post">
+	       			   <form action="BookServlet?method=showAllBook" method="post">
 	       			    	<input type="text" name="pageNumber" style="width: 40px;" value="" onchange="changePage(this);"/> <input type="submit"  id="jump" value="跳转" />
 	       			   </form>
 	    			</li>
-	    			<li><c:if test="${pageNumber!=pageCount}">
-	        		     <a href="/BookStore/BookListServlet?pageNumber=${pageNumber+1}"><img alt="" border="0" src="static/images/next_page.png"></a> </c:if>&nbsp;&nbsp;&nbsp;&nbsp;
+	    			<li>
+	        		     <a href="BookServlet?method=showAllBook&pageNumber=${pageNumber+1}" <c:if test="${pageNumber>=pageCount }">  onclick="javascript:return false;" </c:if>><img alt="" border="0" src="static/images/next_page.png">  </a> 
 	        		</li>
 	        		<li>
 	        			<font  style="font-size: 14px;">当前为第<b style="color: red">${pageNumber}</b>页&nbsp;||&nbsp;共<b style="color: red">${pageCount}</b>页</font>
@@ -98,11 +98,11 @@
 			</div>
 			<div class="clear"></div>
 			<ul class="product clearfix">
-			  <c:forEach items="${requestScope.bookList }" var="book">
+			  <c:forEach items="${bookList }" var="book">
 			  	 <li>
 					<dl>
-						<dt><a href="/BookStore/BookViewServlet?id=${book.id}&pageNumber=${pageNumber}" target="_parent"><img src="${book.imgurl} " /></a></dt>
-						<dd class="title"><a href="/BookStore/BookViewServlet?id=${book.id}&pageNumber=${pageNumber}" target="_parent">${book.name}</a></dd>
+						<dt><a href="BookServlet?method=bookView&id=${book.id}&pageNumber=${pageNumber}" target="_parent"><img src="${book.imgurl} " /></a></dt>
+						<dd class="title"><a href="BookServlet?method=bookView&id=${book.id}&pageNumber=${pageNumber}" target="_parent">${book.name}</a></dd>
 						<dd class="price">￥${book.price }</dd>
 					</dl>
 				</li>

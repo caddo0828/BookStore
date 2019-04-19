@@ -16,11 +16,11 @@
 <body>	
 	<div id="header" class="wrap">
 	<div id="logo"><img src="static/images/logo.gif" /></div>
-	<div class="help"><a href="/BookStore/ShowCarServlet" class="shopping">购物车</a><a href="/BookStore/HistoryServlet">订单历史记录</a><a href="/BookStore/register.html">注册</a><a href="/BookStore/LoginOutServlet">安全退出</a></div>
+	<div class="help"><a href="ShowCarServlet?method=showCar" class="shopping">购物车</a><a href="HistoryServlet?method=showHistory">订单历史记录</a><a href="/BookStore/register.html">注册</a><a href="UserServlet?method=loginOut">安全退出</a></div>
 	<div class="navbar">
 		<ul class="clearfix">
-			<li class="current"><a href="/BookStore/ProductServlet">首页</a></li>
-			<li><a href="/BookStore/BookListServlet?pageNumber=${pageNumber}">图书</a></li>
+			<li class="current"><a href="ProductServlet?method=showHall">首页</a></li>
+			<li><a href="BookServlet?method=showAllBook&pageNumber=${pageNumber}">图书</a></li>
 			<li><a href="#">百货</a></li>
 			<li><a href="#">品牌</a></li>
 			<li><a href="#">促销</a></li>
@@ -54,7 +54,7 @@
 			<h2>商品分类</h2>
 			<dl>
 				<dt>图书音像</dt>
-				<dd><a href="/BookStore/BookListServlet?pageNumber=${pageNumber}">图书</a></dd>
+				<dd><a href="BookServlet?method=showAllBook&pageNumber=${pageNumber}">图书</a></dd>
 				<dt>百货</dt>
 				<dd><a href="#">运动健康</a></dd>
 				<dd><a href="#">服装</a></dd>

@@ -15,11 +15,11 @@
 	<body>	
 	<div id="header" class="wrap">
 	<div id="logo"><img src="static/images/logo.gif" /></div>
-	<div class="help"><a href="/BookStore/ShowCarServlet" class="shopping">购物车</a><a href="/BookStore/login.jsp">登录</a><a href="/BookStore/register.html">注册</a><a href="#">帮助中心</a></div>
+	<div class="help"><a href="ShowCarServlet?method=showCar" class="shopping">购物车</a><a href="login.jsp">登录</a><a href="register.html">注册</a><a href="#">帮助中心</a></div>
 	<div class="navbar">
 		<ul class="clearfix">
-			<li class="current"><a href="/BookStore/ProductServlet">首页</a></li>
-			<li><a href="/BookStore/BookListServlet">图书</a></li>
+			<li class="current"><a href="ProductServlet?method=showHall">首页</a></li>
+			<li><a href="BookServlet?method=showAllBook">图书</a></li>
 			<li><a href="#">百货</a></li>
 			<li><a href="#">品牌</a></li>
 			<li><a href="#">促销</a></li>
@@ -53,9 +53,9 @@
 		<div class="box">
 			<dl>
 				<dt>网站首页</dt>
-				<dd><a href="/BookStore/product_hall.jsp">回到首页</a></dd>
+				<dd><a href="ProductServlet?method=showHall">回到首页</a></dd>
 				<dt>购物车信息</dt>
-				<dd><a href="/BookStore/ShowCarServlet">返回购物车</a></dd>
+				<dd><a href="BookServlet?method=showAllBook">返回购物车</a></dd>
 				<dt>订单管理</dt>
 				<dd><a href="#">取消订单</a></dd>
 			</dl>
@@ -65,7 +65,7 @@
 	<div class="main">
 		<h2>填写订购信息</h2>
 		<div class="message">
-			<form action="/BookStore/OrderItemServlet" method="post" >
+			<form action="OrderServlet?method=payItem" method="post" >
 				<table class="form">
 					<tr>
 						<td class="field">收货人姓名</td>
@@ -73,15 +73,15 @@
 					</tr>
 					<tr>
 						<td class="field">联系电话</td>
-						<td><input type="text" class="text" name="telephone" value="" onfocus="focusPhone(this)" onblur="checkPhone(this);"/><span></span></td>
+						<td><input type="text" class="text" name="telephone" value="" onfocus="focusPhone(this)" onblur="return checkPhone(this);" /><span id="phoneTip"></span></td>
 					</tr>
 					<tr>
 						<td class="field">送货地址：</td>
-						<td><input type="text" class="text" name="address" value=""/><span></span></td>
+						<td><input type="text" class="text" name="address" value=""/></td>
 					</tr>
 					<tr>
 						<td></td>
-						<td><label class="ui-blue"><input type="submit" onclick="return checkMsg();"/></label></td>
+						<td><label class="ui-blue"><input type="submit" onclick="return checkMsg();" /></label></td>
 					</tr>
 				</table>
 				<span id="errorMsg"></span>

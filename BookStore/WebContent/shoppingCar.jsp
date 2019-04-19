@@ -15,11 +15,11 @@
 </head>
 <div id="header" class="wrap">
 	<div id="logo"><img src="static/images/logo.gif" /></div>
-	<div class="help"><a href="/BookStore/ShowCarServlet" class="shopping">购物车</a><a href="/BookStore/HistoryServlet">订单历史记录</a><a href="/BookStore/register.html">注册</a><a href="/BookStore/LoginOutServlet">安全退出</a></div>
+	<div class="help"><a href="ShowCarServlet?method=showCar" class="shopping">购物车</a><a href="HistoryServlet?method=showHistory">订单历史记录</a><a href="register.html">注册</a><a href="UserServlet?method=loginOut">安全退出</a></div>
 	<div class="navbar">
 		<ul class="clearfix">
-			<li class="current"><a href="/BookStore/ProductServlet">首页</a></li>
-			<li><a href="/BookStore/BookListServlet">图书</a></li>
+			<li class="current"><a href="ProductServlet?method=showHall">首页</a></li>
+			<li><a href="BookServlet?method=showAllBook">图书</a></li>
 			<li><a href="#">百货</a></li>
 			<li><a href="#">品牌</a></li>
 			<li><a href="#">促销</a></li>
@@ -49,7 +49,7 @@
 </div>
 <div class="wrap">
 	<div id="shopping">
-		<form action="/BookStore/BookCLServlet?type=update" method="post" id="form1">
+		<form action="BookServlet?method=updateNums" method="post" id="form1">
 			<table>
 				<tr>
 					<th><font style="float: left;">全选</font><input type="checkbox" id="allCheckBox" style="float: left; margin-top: 5px;" onclick="allCheck(this);" />商品图</th>
@@ -78,7 +78,7 @@
 										<dd><input type="submit"  disabled="disabled" class="jump" value="修改" /></dd>
 									</dl>
 								</td>
-								<td class="delete"><a href="/BookStore/BookCLServlet?type=delete&id=${book.id}&booknums=${book.shopNums}">删除</a></td>
+								<td class="delete"><a href="BookServlet?method=delete&id=${book.id}&booknums=${book.shopNums}">删除</a></td>
 							</tr>
 					   </c:forEach>
 				   </c:when>
@@ -96,7 +96,7 @@
 			<div class="button">
 				<b style="color: #cc3300;float:left ;margin-top:5px;font-size:14px;">${errorMsg}</b>
 				<span></span>
-				<a href="${pageContext.request.contextPath}/BookCLServlet?type=clear">清空购物车</a>
+				<a href="BookServlet?method=clear">清空购物车</a>
 				<input type="button" onclick="return changeAction(this);">
 			</div>
 		</form>

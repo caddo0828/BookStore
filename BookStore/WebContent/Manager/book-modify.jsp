@@ -15,13 +15,13 @@
 <body>
 <div id="header" class="wrap">
 	<div id="logo"><img src="static/images/logo.gif" /></div>
-	<div class="help"><a href="/BookStore/ProductServlet">返回前台页面</a></div>
+	<div class="help"><a href="ProductServlet?method=showHall">返回前台页面</a></div>
 	<div class="navbar">
 		<ul class="clearfix">
-			<li class="current"><a href="/BookStore/Manager/index.html">首页</a></li>
-			<li><a href="/BookStore/ManafindUserServlet.do">用户</a></li>
-			<li><a href="/BookStore/ManaFindBookServlet.do">图书</a></li>
-			<li><a href="/BookStore/ManaFindOrderServlet.do">订单</a></li>
+			<li class="current"><a href="Manager/index.html">首页</a></li>
+			<li><a href="/BookStore/ManagerUserServlet.do?method=showUser">用户</a></li>
+			<li><a href="/BookStore/ManagerBookServlet.do?method=showBook">图书</a></li>
+			<li><a href="/BookStore/ManagerOrderServlet.do?method=showOrder">订单</a></li>
 		</ul>
 	</div>
 </div>
@@ -35,18 +35,18 @@
 		<div class="box">
 			<dl>
 				<dt>用户管理</dt>
-				<dd><em><a href="/BookStore/Manager/user-add.jsp">新增</a></em><a href="/BookStore/ManafindUserServlet.do">用户管理</a></dd>
+				<dd><em><a href="/BookStore/Manager/user-add.jsp">新增</a></em><a href="/BookStore/ManagerUserServlet.do?method=showUser">用户管理</a></dd>
 				<dt>图书信息</dt>
-				<dd><em><a href="/BookStore/Manager/book-add.jsp">新增</a></em><a href="/BookStore/ManaFindBookServlet.do">图书管理</a></dd>
+				<dd><em><a href="/BookStore/Manager/book-add.jsp">新增</a></em><a href="/BookStore/ManagerBookServlet.do?method=showBook">图书管理</a></dd>
 				<dt>订单管理</dt>
-				<dd><a href="/BookStore/ManaFindOrderServlet.do">订单管理</a></dd>
+				<dd><a href="/BookStore/ManagerOrderServlet.do?method=showOrder">订单管理</a></dd>
 			</dl>
 		</div>
 	</div>
 	<div class="main">
 		<h2>修改商品 &nbsp;  <b style="color: red;">${error}</b> </h2>
 		<div class="manage">
-			<form action="/BookStore/ManaBookUpload.do?type=update" method="post" enctype="multipart/form-data" onsubmit="return checkBookForm(this);">
+			<form action="/BookStore/ManagerBookServlet.do?method=update" method="post" enctype="multipart/form-data" onsubmit="return checkBookForm(this);">
 				<table class="form">
 					<tr>
 						<td class="field">商品ID：</td>
